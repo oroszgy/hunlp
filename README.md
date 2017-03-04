@@ -2,7 +2,7 @@
 
 The aim of this project to provide a unified access to Hungarian NLP tools. As such it provides wrapper classes and a REST API.
 Currently the project integrates:
-* magyarlanc
+* `magyarlanc`
 
 # Usage
 
@@ -13,7 +13,9 @@ Compile: `$ make dependencies install`
 
 Run: `$ make serve`
 
-Test: 
+Test: `$ curl -X POST -H "Content-Type: application/json" -d '{
+         	"text": "Szia."
+         }' "http://localhost:9090/v1/parse"`
 
 ## Programmatically
 
@@ -21,7 +23,7 @@ Test:
 import hu.nlp.api.HuNlp;
 
 HuNlp nlp = new HuNlp();
-List<Sentence> sentences = nlp.parse("Ez itt egz példa. Vajon működik?");
+List<Sentence> sentences = nlp.parse("Ez itt egy példa. Vajon működik?");
 
 ```
 

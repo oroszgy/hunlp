@@ -25,4 +25,31 @@ public class Sentence implements Iterable<Token> {
     public Iterator<Token> iterator() {
         return null;
     }
+
+    public List<Token> getTokens() {
+        return tokens;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Sentence tokens1 = (Sentence) o;
+
+        return tokens != null ? tokens.equals(tokens1.tokens) : tokens1.tokens == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return tokens != null ? tokens.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Sentence{" +
+                "tokens=" + tokens +
+                '}';
+    }
 }

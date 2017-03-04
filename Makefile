@@ -17,3 +17,4 @@ serve:
 	./bin/hunlp.sh
 
 release:
+	zip hunlp.zip -r bin/*

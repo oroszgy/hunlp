@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -48,6 +48,13 @@
             <scope>system</scope>
             <version>3.0</version>
             <systemPath>${basedir}/lib/magyarlanc-3.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>hu.u_szeged</groupId>
+            <artifactId>ner</artifactId>
+            <scope>system</scope>
+            <version>1.0</version>
+            <systemPath>${basedir}/lib/ner.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>

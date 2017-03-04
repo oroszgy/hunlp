@@ -23,7 +23,7 @@ public class Sentence implements Iterable<Token> {
 
     @Override
     public Iterator<Token> iterator() {
-        return null;
+        return tokens.iterator();
     }
 
     public List<Token> getTokens() {
@@ -51,5 +51,9 @@ public class Sentence implements Iterable<Token> {
         return "Sentence{" +
                 "tokens=" + tokens +
                 '}';
+    }
+
+    String[] tokenStrings() {
+        return this.tokens.stream().map(Token::getWordform).collect(Collectors.toList()).toArray(new String[]{});
     }
 }

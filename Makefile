@@ -1,6 +1,7 @@
 dependencies:
 	mkdir -p lib
 	cd lib && wget -N http://rgai.inf.u-szeged.hu/project/nlp/research/magyarlanc/magyarlanc-3.0.jar
+	cd lib && wget -N http://rgai.inf.u-szeged.hu/project/nlp/research/NER/ner.jar
 
 install:
 	mvn install

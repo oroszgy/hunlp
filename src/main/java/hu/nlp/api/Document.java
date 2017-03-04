@@ -1,13 +1,14 @@
 package hu.nlp.api;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
  * Created by gorosz on 2017. 03. 04..
  */
-public class Document {
+public class Document implements Iterable<Sentence> {
     protected List<Sentence> sentences;
 
     public Document(List<Sentence> sentences) {
@@ -39,5 +40,10 @@ public class Document {
     @Override
     public int hashCode() {
         return sentences != null ? sentences.hashCode() : 0;
+    }
+
+    @Override
+    public Iterator<Sentence> iterator() {
+        return sentences.iterator();
     }
 }

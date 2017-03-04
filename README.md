@@ -2,8 +2,8 @@
 
 The aim of this project to provide a unified access to Hungarian NLP tools. As such it provides wrapper classes and a REST API.
 Currently the project integrates:
-* `magyarlanc`
-
+* [`magyarlanc` 3.0](http://www.inf.u-szeged.hu/rgai/magyarlanc)
+* [Szeged NER](http://www.inf.u-szeged.hu/rgai/NER)
 # Usage
 
 ## REST API
@@ -34,6 +34,6 @@ First release containing only magyarlanc.
 
 # License
 
-HuNLP is under LGPL3, but integrated libraries might use different (commercial) licenses.
+HuNLP is under LGPL3, however libraries integrated might use different (commercial) licenses.
 
 

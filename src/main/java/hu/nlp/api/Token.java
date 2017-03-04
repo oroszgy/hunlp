@@ -15,6 +15,7 @@ public class Token {
     protected Map<String, String> tagProperties;
     protected int headId;
     protected String arcLabel;
+    protected String entityType;
 
     public Token(int id, String wordform, String lemma, String pos, Map<String, String> tagProperties, int headId, String arcLabel) {
         this.id = id;
@@ -24,6 +25,12 @@ public class Token {
         this.tagProperties = tagProperties;
         this.headId = headId;
         this.arcLabel = arcLabel;
+    }
+
+    public Token(int id, String wordform, String lemma, String pos, Map<String, String> tagProperties, int headId,
+                 String arcLabel, String entityType) {
+        this(id, wordform, lemma, pos, tagProperties, headId, arcLabel);
+        this.entityType = entityType;
     }
 
     public static Token fromArray(String[] token) {
@@ -40,31 +47,6 @@ public class Token {
                 (str) -> Arrays.asList(str.split("="))).collect(Collectors.toMap(l -> l.get(0), l -> l.get(1)));
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Token token = (Token) o;
-
-        if (headId != token.headId) return false;
-        if (arcLabel != token.arcLabel) return false;
-        if (!wordform.equals(token.wordform)) return false;
-        if (!lemma.equals(token.lemma)) return false;
-        if (!pos.equals(token.pos)) return false;
-        return tagProperties != null ? tagProperties.equals(token.tagProperties) : token.tagProperties == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = wordform.hashCode();
-        result = 31 * result + lemma.hashCode();
-        result = 31 * result + pos.hashCode();
-        result = 31 * result + (tagProperties != null ? tagProperties.hashCode() : 0);
-        result = 31 * result + headId;
-        result = 31 * result + arcLabel.hashCode();
-        return result;
-    }
 
     public int getId() {
 
@@ -133,6 +115,47 @@ public class Token {
                 ", tagProperties=" + tagProperties +
                 ", headId=" + headId +
                 ", arcLabel='" + arcLabel + '\'' +
+                ", entityType='" + entityType + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Token token = (Token) o;
+
+        if (id != token.id) return false;
+        if (headId != token.headId) return false;
+        if (wordform != null ? !wordform.equals(token.wordform) : token.wordform != null) return false;
+        if (lemma != null ? !lemma.equals(token.lemma) : token.lemma != null) return false;
+        if (pos != null ? !pos.equals(token.pos) : token.pos != null) return false;
+        if (tagProperties != null ? !tagProperties.equals(token.tagProperties) : token.tagProperties != null)
+            return false;
+        if (arcLabel != null ? !arcLabel.equals(token.arcLabel) : token.arcLabel != null) return false;
+        return entityType != null ? entityType.equals(token.entityType) : token.entityType == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (wordform != null ? wordform.hashCode() : 0);
+        result = 31 * result + (lemma != null ? lemma.hashCode() : 0);
+        result = 31 * result + (pos != null ? pos.hashCode() : 0);
+        result = 31 * result + (tagProperties != null ? tagProperties.hashCode() : 0);
+        result = 31 * result + headId;
+        result = 31 * result + (arcLabel != null ? arcLabel.hashCode() : 0);
+        result = 31 * result + (entityType != null ? entityType.hashCode() : 0);
+        return result;
+    }
+
+    public String getEntityType() {
+
+        return entityType;
+    }
+
+    public void setEntityType(String entityType) {
+        this.entityType = entityType;
     }
 }

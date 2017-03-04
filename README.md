@@ -7,6 +7,10 @@ Currently the project integrates:
 
 ## Usage
 
+### Download
+
+Released binaries can be obtained from [here](https://github.com/oroszgy/hunlp/releases).
+
 ### Install
 
 Compile: `$ make dependencies install`

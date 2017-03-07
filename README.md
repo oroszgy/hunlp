@@ -1,4 +1,4 @@
-# HuNLP API
+# HuNLP: Hungarian language processing for Humans
 
 The aim of this project to provide a unified access to Hungarian NLP tools. As such it provides wrapper classes and a REST API.
 Currently the project integrates:
@@ -35,7 +35,7 @@ List<Sentence> sentences = nlp.parse("Ez itt egy példa. Vajon működik?");
 
 ## 0.1
 
-First experimental release containing magyarlanc and Szeged NER.
+First experimental release containing magyarlanc (21-01-2016) and Szeged NER (20-06-2014).
 
 # License
 

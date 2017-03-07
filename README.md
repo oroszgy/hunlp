@@ -39,6 +39,9 @@ First experimental release containing magyarlanc (21-01-2016) and Szeged NER (20
 
 # License
 
-HuNLP is under LGPL3, however libraries integrated might use different (commercial) licenses.
+HuNLP is under LGPL3, however libraries integrated might use different (commercial) licenses:
+
+* [magyarlanc license](http://rgai.inf.u-szeged.hu/project/nlp/research/magyarlanc/magyarlanc_license.html)
+* [Szeged NER](http://rgai.inf.u-szeged.hu/project/nlp/research/NER/doc.html) builds upon [Mallet](https://github.com/mimno/Mallet/blob/master/LICENSE)
 
 

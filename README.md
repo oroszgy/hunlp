@@ -19,7 +19,7 @@ Compile: `$ make dependencies install`
 
 Run the server: `$ make serve`
 
-Make a call: `$ curl -X POST -H "Content-Type: application/json" -d '{"text": "Szia."}' "http://localhost:9090/v1/parse"`
+Make a call: `$ curl -X POST -H "Content-Type: application/json" -d '{"text": "Szia."}' "http://localhost:9090/v1/annotate"`
 
 ### Programmatically
 

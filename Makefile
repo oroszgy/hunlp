@@ -12,6 +12,7 @@ install:
 clean:
 	mvn clean
 	rm bin/*.jar
+	rm hunlp.zip
 
 serve:
 	./bin/hunlp.sh

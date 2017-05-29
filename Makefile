@@ -18,3 +18,6 @@ serve:
 
 release:
 	zip hunlp.zip -r bin/*
+
+smoke-test:
+	curl -H "Content-Type: application/json" -X POST -d '{"text": "Hol lakik a télapó? Az északi sarkon!"}' localhost:9090/v1/annotate

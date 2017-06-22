@@ -50,7 +50,7 @@ class MainApp {
 Kotlin
 
 ```kotlin
-import hu.nlp.api.HuNLP
+import hu.nlp.api.HuNlp
 
 fun main(args: Array<String>) {
     val nlp = HuNlp()

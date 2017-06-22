@@ -11,7 +11,7 @@ class HuNlp {
     }
 
 
-    operator fun invoke(text: String): Document {
+    @Synchronized operator fun invoke(text: String): Document {
         val result = Magyarlanc.depParse(text)
         val doc = documentFromArray(result)
         for (sent in doc.sentences) {

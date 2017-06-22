@@ -7,21 +7,32 @@ Currently the project integrates:
 
 ## Usage
 
-### Download
+*Before running the application, make sure you have at least 3GB free memory.*
 
-Released binaries can be obtained from [here](https://github.com/oroszgy/hunlp/releases).
+### Get the library
 
-### Install
+You can compile the library locally: `$ make dependencies install`
 
-Compile: `$ make dependencies install`
+Or find zipped jars [here](https://github.com/oroszgy/hunlp/releases)
 
-### REST API
+Alternatively, you can directly use the prebuilt docker image: `$ docker pull oroszgy/hunlp`
 
-Run the server: `$ make serve`
+### Running the application
 
-Make a call: `$ curl -X POST -H "Content-Type: application/json" -d '{"text": "Szia."}' "http://localhost:9090/v1/annotate"`
+In case you directly compiled the sources: `$ make serve`
 
-### Programmatically
+Having the binairies downloaded: `$ hunlp.sh`
+
+Or running the docker container: `$ docker run -it -p 9090:9090 oroszgy/hunlp`
+
+### Using the application
+
+Through the REST API
+
+```bash
+$ curl -X POST -H "Content-Type: application/json" -d '{"text": "Szia világ!"}' "http://localhost:9090/v1/annotate"
+
+```
 
 Java
 
@@ -39,7 +50,7 @@ class MainApp {
 Kotlin
 
 ```kotlin
-import hu.nlp.api
+import hu.nlp.api.HuNLP
 
 fun main(args: Array<String>) {
     val nlp = HuNlp()
@@ -47,20 +58,21 @@ fun main(args: Array<String>) {
 }
 ```
 
-# Changelog
+## Changelog
 
-## 0.2
+### 0.2
 
 Experimental Kotlinization
 
-## 0.1
+### 0.1
 
 First experimental release containing magyarlanc (21-01-2016) and Szeged NER (20-06-2014).
 
-# License
+## License
 
-HuNLP is under LGPL3, however libraries integrated might use different (commercial) licenses:
+HuNLP is licensed under LGPL3, however libraries integrated might use different (commercial) licenses:
 
 * [magyarlanc license](http://rgai.inf.u-szeged.hu/project/nlp/research/magyarlanc/magyarlanc_license.html)
 * [Szeged NER](http://rgai.inf.u-szeged.hu/project/nlp/research/NER/doc.html) builds upon [Mallet](https://github.com/mimno/Mallet/blob/master/LICENSE)
 
+(c) Gyorgy Orosz, 2017

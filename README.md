@@ -12,6 +12,7 @@ Currently the project integrates:
 ### Get the library
 
 You can compile the library locally: `$ make dependencies install`
+(You would need **Oracle** Java 8 and Maven.)
 
 Or find zipped jars [here](https://github.com/oroszgy/hunlp/releases)
 

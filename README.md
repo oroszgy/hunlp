@@ -35,7 +35,7 @@ $ curl -X POST -H "Content-Type: application/json" -d '{"text": "Szia világ!"}'
 
 ```
 
-Java
+**Java**
 
 ```java
 import hu.nlp.api.HuNlp;
@@ -48,7 +48,7 @@ class MainApp {
 }
 ```
 
-Kotlin
+**Kotlin**
 
 ```kotlin
 import hu.nlp.api.HuNlp
@@ -57,6 +57,23 @@ fun main(args: Array<String>) {
     val nlp = HuNlp()
     val doc: Document = nlp("Ez itt egy példa. Vajon működik?")
 }
+```
+
+**Python**
+
+*Make sure you installed the wrapper:* `pip install https://github.com/oroszgy/hunlp/releases/download/0.2/hunlp-0.2.0.tar.gz`
+
+```python
+from hunlp import HuNlp
+
+nlp = HuNlp()
+doc = nlp("Ez itt egy példa. Vajon működik?")
+
+print(doc.ents)
+
+for sent in doc:
+    for tok in sent:
+        print(tok.text, tok.lemma, tok.tag)
 ```
 
 ## Changelog

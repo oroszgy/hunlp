@@ -30,3 +30,6 @@ docker-build:
 docker-push:
 	docker push oroszgy/hunlp:0.2.0
 	docker push oroszgy/hunlp:latest
+
+python-dist:
+	cd src/main/python && python setup.py sdist

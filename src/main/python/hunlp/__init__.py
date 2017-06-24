@@ -11,7 +11,7 @@ class Token:
         self.tag_properties = tagProperties
         self.head = headId
         self.dep = arcLabel
-        self.ent_type = entityType
+        self.entity_type = entityType
 
     def __str__(self):
         return self.text
@@ -25,7 +25,7 @@ class Sentence:
         self._tokens = tokens
 
     def __iter__(self):
-        return self._tokens
+        return iter(self._tokens)
 
     def __getitem__(self, index):
         return self._tokens[index]
@@ -42,7 +42,7 @@ class Doc:
         self._sentences = sentences
 
     def __iter__(self):
-        return self._sentences
+        return iter(self._sentences)
 
     def __getitem__(self, index):
         return self._sentences[index]
@@ -82,3 +82,5 @@ class HuNlp(object):
         })
         data = result.json()
         return Doc([Sentence([Token(**t) for t in sent["tokens"]]) for sent in data["sentences"]])
+
+

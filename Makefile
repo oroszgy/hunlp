@@ -24,9 +24,9 @@ smoke-test:
 	curl -H "Content-Type: application/json" -X POST -d '{"text": "Hol lakik a télapó? Az északi sarkon!"}' localhost:9090/v1/annotate
 
 docker-build:
-	docker build . -t oroszgylink/hunlp:0.2.0
-	docker tag oroszgylink/hunlp:0.2.0 oroszgylink/hunlp:latest
+	docker build . -t oroszgy/hunlp:0.2.0
+	docker tag oroszgy/hunlp:0.2.0 oroszgy/hunlp:latest
 
 docker-push:
-	docker push oroszgylink/hunlp:0.2.0
-	docker push oroszgylink/hunlp:latest
+	docker push oroszgy/hunlp:0.2.0
+	docker push oroszgy/hunlp:latest

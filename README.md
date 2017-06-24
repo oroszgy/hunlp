@@ -16,7 +16,7 @@ You can compile the library locally: `$ make dependencies install`
 
 Or find zipped jars [here](https://github.com/oroszgy/hunlp/releases)
 
-Alternatively, you can directly use the prebuilt docker image: `$ docker pull oroszgylink/hunlp`
+Alternatively, you can directly use the prebuilt docker image: `$ docker pull oroszgy/hunlp`
 
 ### Running the application
 
@@ -24,7 +24,7 @@ In case you directly compiled the sources: `$ make serve`
 
 Having the binairies downloaded: `$ hunlp.sh`
 
-Or running the docker container: `$ docker run -it -p 9090:9090 oroszgylink/hunlp`
+Or running the docker container: `$ docker run -it -p 9090:9090 oroszgy/hunlp`
 
 ### Using the application
 

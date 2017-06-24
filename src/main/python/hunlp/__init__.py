@@ -56,19 +56,19 @@ class Doc:
     @property
     def entities(self):
         ne = []
-        for sent in self.sentences:
-            for tok in sent.tokens:
-                if tok.entityType != "O":
+        for sent in self:
+            for tok in sent:
+                if tok.entity_type != "O":
                     ne.append(tok)
                 else:
                     if len(ne) > 0:
                         text = " ".join(t.text for t in ne)
-                        tag = ne[0].entityType.split("-")[1]
+                        tag = ne[0].entity_type.split("-")[1]
                         yield text, tag
                         ne = []
             if len(ne) > 0:
                 text = " ".join(t.text for t in ne)
-                tag = ne[0].entityType.split("-")[1]
+                tag = ne[0].entity_type.split("-")[1]
                 yield text, tag
 
 

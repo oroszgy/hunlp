@@ -13,8 +13,8 @@ install:
 
 clean:
 	mvn clean
-	rm bin/*.jar
-	rm hunlp.zip
+	rm -f bin/*.jar
+	rm -f hunlp.zip
 
 serve:
 	./bin/hunlp.sh
@@ -23,8 +23,10 @@ release:
 	zip hunlp.zip -r bin/*
 
 smoke-test:
-	curl -H "Content-Type: application/json" -X POST -d '{"text": "Hol lakik a télapó? Az északi sarkon!"}' localhost:9090/v1/annotate
-	curl -H "Content-Type: application/json" -X POST -d '{"text": "Hol lakik a télapó? Az északi sarkon!"}' localhost:9090/v1/entities
+	echo "Testing annotation endpoint"
+	curl -H "Content-Type: application/json" -X POST -d '{"text": "Hol lakik a télapó? Az északi sarkon!"}' localhost:9090/v1/annotate | less
+	echo "Testing entities endpoint"
+	curl -H "Content-Type: application/json" -X POST -d '{"text": "Hol lakik a télapó? Az északi sarkon!"}' localhost:9090/v1/entities | less
 
 docker-build:
 	docker build . -t oroszgy/hunlp:$(VERSION)

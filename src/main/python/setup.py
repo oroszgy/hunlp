@@ -17,7 +17,7 @@ setup(
         'Intended Audience :: Developers',
         'Programming Language :: Python :: 3.5',
     ],
-    keywords='nlp hungarian ner magyarlanc pos-tagging dependency-parsing',
+    keywords='nlp hungarian entities magyarlanc pos-tagging dependency-parsing',
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
     install_requires=[],
 )

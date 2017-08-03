@@ -20,4 +20,11 @@ fun main(args: Array<String>) {
         val doc: Document = nlp(text)
         om.writeValueAsString(doc)
     })
+
+    post("/v1/entities", "application/json", { request, _ ->
+        val body: String = request.body()
+        val text: String = om.readTree(body).get("text").asText()
+        val doc: Document = nlp.entities(text)
+        om.writeValueAsString(doc)
+    })
 }

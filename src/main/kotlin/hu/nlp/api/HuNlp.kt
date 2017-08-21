@@ -14,8 +14,25 @@ class HuNlp {
 
 
     @Synchronized operator fun invoke(text: String): Document {
+        var doc = parse(text)
+        addEntities(doc)
+        return doc
+    }
+
+    @Synchronized fun parse(text: String): Document {
         val result: Array<Array<Array<String>>> = Magyarlanc.depParse(text)
         var doc: Document = documentFromArray(result, ::parsedToken)
+        return doc
+    }
+
+    @Synchronized fun tokenize(text: String): Document {
+        val results: Array<Array<String>> = tokenizer.splitToArray(text)
+        var doc: Document = documentFromArray(results, ::textToken)
+        return doc
+    }
+
+    @Synchronized fun tagEntities(text: String): Document {
+        val doc: Document = tokenize(text)
         addEntities(doc)
         return doc
     }
@@ -28,17 +45,5 @@ class HuNlp {
                 sent.tokens[i].entityType = nerAnnotation[i]
             }
         }
-    }
-
-    @Synchronized fun entities(text: String): Document {
-        val doc: Document = tokens(text)
-        addEntities(doc)
-        return doc
-    }
-
-    @Synchronized fun tokens(text: String): Document {
-        val results: Array<Array<String>> = tokenizer.splitToArray(text)
-        val doc: Document = documentFromArray(results, ::textToken)
-        return doc
     }
 }

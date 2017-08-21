@@ -18,7 +18,7 @@ data class Token(
 
 //operator fun Document.iterator(): Iterator<Sentence> = this.sentences.iterator()
 
-//operator fun Sentence.iterator(): Iterator<Token> = this.tokens.iterator()
+//operator fun Sentence.iterator(): Iterator<Token> = this.tokenize.iterator()
 
 fun parsedToken(token: Array<String>): Token = Token(
         token[0].toInt(), token[1], token[2], token[3],

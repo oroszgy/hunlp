@@ -1,9 +1,9 @@
-VERSION = 0.3
+VERSION = 0.4
 
 dependencies:
 	mkdir -p lib
 	cd lib && wget -N http://rgai.inf.u-szeged.hu/project/nlp/research/magyarlanc/magyarlanc-3.0.jar
-	cd lib && wget -N http://rgai.inf.u-szeged.hu/project/nlp/research/NER/entities.jar
+	cd lib && wget -N http://rgai.inf.u-szeged.hu/project/nlp/research/NER/tagEntities.jar
 
 install:
 	mvn install
@@ -24,9 +24,13 @@ release:
 
 smoke-test:
 	echo "Testing annotation endpoint"
-	curl -H "Content-Type: application/json" -X POST -d '{"text": "Hol lakik a télapó? Az északi sarkon!"}' localhost:9090/v1/annotate | less
-	echo "Testing entities endpoint"
-	curl -H "Content-Type: application/json" -X POST -d '{"text": "Hol lakik a télapó? Az északi sarkon!"}' localhost:9090/v1/entities | less
+	curl -H "Content-Type: application/json" -X POST -d '{"text": "Hol lakik a télapó? Az északi sarkon!"}' localhost:9090/v1/annotate
+	echo "Testing tag_entities endpoint"
+	curl -H "Content-Type: application/json" -X POST -d '{"text": "Hol lakik a télapó? Az északi sarkon!"}' localhost:9090/v1/tag_entities
+	echo "Testing tokenize endpoint"
+	curl -H "Content-Type: application/json" -X POST -d '{"text": "Hol lakik a télapó? Az északi sarkon!"}' localhost:9090/v1/tokenize
+	echo "Testing parse endpoint"
+	curl -H "Content-Type: application/json" -X POST -d '{"text": "Hol lakik a télapó? Az északi sarkon!"}' localhost:9090/v1/parse
 
 docker-build:
 	docker build . -t oroszgy/hunlp:$(VERSION)

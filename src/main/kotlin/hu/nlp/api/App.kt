@@ -21,10 +21,24 @@ fun main(args: Array<String>) {
         om.writeValueAsString(doc)
     })
 
-    post("/v1/entities", "application/json", { request, _ ->
+    post("/v1/parse", "application/json", { request, _ ->
         val body: String = request.body()
         val text: String = om.readTree(body).get("text").asText()
-        val doc: Document = nlp.entities(text)
+        val doc: Document = nlp.parse(text)
+        om.writeValueAsString(doc)
+    })
+
+    post("/v1/tokenize", "application/json", { request, _ ->
+        val body: String = request.body()
+        val text: String = om.readTree(body).get("text").asText()
+        val doc: Document = nlp.tokenize(text)
+        om.writeValueAsString(doc)
+    })
+
+    post("/v1/tag_entities", "application/json", { request, _ ->
+        val body: String = request.body()
+        val text: String = om.readTree(body).get("text").asText()
+        val doc: Document = nlp.tagEntities(text)
         om.writeValueAsString(doc)
     })
 }

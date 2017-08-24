@@ -1,5 +1,7 @@
 package hu.nlp.api
 
+import com.sun.tools.javac.jvm.ByteCodes.ret
+
 /**
  * Created by gorosz on 2017. 05. 28..
  */
@@ -35,7 +37,13 @@ fun textToken(token: String) = Token(0, token)
 private fun parseMorphProperties(props: String): Map<String, String>? {
     if (props == "_")
         return null
-    return props.split("|").map { tagProp -> tagProp.split("=") }.associateBy({ it[0] }, { it[1] })
+    var ret = null
+    try {
+        var ret = props.split("|").map { tagProp -> tagProp.split("=") }.associateBy({ it[0] }, { it[1] })
+    } catch (e: Exception) {
+        // TODO: warn the user
+    }
+    return ret
 }
 
 private fun <T> sentenceFromArray(tokens: Array<T>, tokenParser: (T) -> Token): Sentence =

@@ -18,6 +18,6 @@ setup(
         'Programming Language :: Python :: 3.5',
     ],
     keywords='nlp hungarian entities magyarlanc pos-tagging dependency-parsing',
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
-    install_requires=[],
+    packages=find_packges(exclude=['contrib', 'docs', 'tests']),
+    install_requires=["requests", "plac"],
 )

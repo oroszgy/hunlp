@@ -2,7 +2,14 @@ import requests
 
 
 class Token:
-    def __init__(self, arcLabel: str, entityType: str, headId: int, id: int, lemma: str, pos: str, tagProperties: dict,
+    def __init__(self,
+                 arcLabel: str,
+                 entityType: str,
+                 headId: int,
+                 id: int,
+                 lemma: str,
+                 pos: str,
+                 tagProperties: dict,
                  text: str):
         self.i = id
         self.text = text
@@ -17,7 +24,8 @@ class Token:
         return self.text
 
     def __repr__(self):
-        return "Token({})".format(", ".join(["{}={}".format(k, str(v)) for k, v in self.__dict__.items()]))
+        return "Token({})".format(", ".join(
+            ["{}={}".format(k, str(v)) for k, v in self.__dict__.items()]))
 
 
 class Sentence:
@@ -34,7 +42,8 @@ class Sentence:
         return " ".join(str(tok) for tok in self._tokens)
 
     def __repr__(self):
-        return "Sentence({})".format(", ".join(repr(tok) for tok in self._tokens))
+        return "Sentence({})".format(
+            ", ".join(repr(tok) for tok in self._tokens))
 
 
 class Doc:
@@ -51,7 +60,8 @@ class Doc:
         return " ".join(str(s) for s in self._sentences)
 
     def __repr__(self):
-        return "Doc(\n\t{}\n)".format("\n\t".join(repr(s) for s in self._sentences))
+        return "Doc(\n\t{}\n)".format(
+            "\n\t".join(repr(s) for s in self._sentences))
 
     @property
     def entities(self):
@@ -77,10 +87,9 @@ class HuNlp(object):
         self._url = "{}/{}".format(host, endpoint)
 
     def __call__(self, text):
-        result = requests.post(self._url, json={
-            "text": text
-        })
+        result = requests.post(self._url, json={"text": text})
         data = result.json()
-        return Doc([Sentence([Token(**t) for t in sent["tokens"]]) for sent in data["sentences"]])
-
-
+        return Doc([
+            Sentence([Token(**t) for t in sent["tokens"]])
+            for sent in data["sentences"]
+        ])

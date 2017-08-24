@@ -1,4 +1,4 @@
-VERSION = 0.4
+VERSION = 0.4.1
 
 dependencies:
 	mkdir -p lib

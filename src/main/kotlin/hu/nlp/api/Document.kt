@@ -1,6 +1,5 @@
 package hu.nlp.api
 
-import com.sun.tools.javac.jvm.ByteCodes.ret
 
 /**
  * Created by gorosz on 2017. 05. 28..

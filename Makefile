@@ -1,4 +1,7 @@
-VERSION = 0.4.1
+VERSION := $$(cat pom.xml | grep "^    <version>.*</version>$$" | awk -F'[><]' '{print $$3}')
+
+version:
+	@echo $(VERSION)
 
 dependencies:
 	mkdir -p lib
@@ -32,7 +35,7 @@ smoke-test:
 	echo "Testing parse endpoint"
 	curl -H "Content-Type: application/json" -X POST -d '{"text": "Hol lakik a télapó? Az északi sarkon!"}' localhost:9090/v1/parse
 
-docker-build:
+docker-build: install
 	docker build . -t oroszgy/hunlp:$(VERSION)
 	docker tag oroszgy/hunlp:$(VERSION) oroszgy/hunlp:latest
 

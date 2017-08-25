@@ -39,7 +39,7 @@ docker-build: install
 	docker build . -t oroszgy/hunlp:$(VERSION)
 	docker tag oroszgy/hunlp:$(VERSION) oroszgy/hunlp:latest
 
-docker-push:
+docker-push: docker-build
 	docker push oroszgy/hunlp:$(VERSION)
 	docker push oroszgy/hunlp:latest
 

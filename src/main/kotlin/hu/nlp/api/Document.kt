@@ -34,14 +34,10 @@ fun taggedToken(token: Array<String>): Token = Token(
 fun textToken(token: String) = Token(0, token)
 
 private fun parseMorphProperties(props: String): Map<String, String>? {
-    if (props == "_")
+    if (props == "_" || props == "")
         return null
-    var ret = null
-    try {
-        var ret = props.split("|").map { tagProp -> tagProp.split("=") }.associateBy({ it[0] }, { it[1] })
-    } catch (e: Exception) {
-        // TODO: warn the user
-    }
+
+    val ret = props.split("|").map { tagProp -> tagProp.split("=") }.associateBy({ it[0] }, { it[1] })
     return ret
 }
 

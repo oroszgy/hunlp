@@ -87,9 +87,17 @@ class HuNlp(object):
         self._url = "{}/{}".format(host, endpoint)
 
     def __call__(self, text):
-        result = requests.post(self._url, json={"text": text})
-        data = result.json()
-        return Doc([
-            Sentence([Token(**t) for t in sent["tokens"]])
-            for sent in data["sentences"]
-        ])
+        try:
+            result = requests.post(self._url, json={"text": text})
+            data = result.json()
+            if data:
+                return Doc([
+                    Sentence([Token(**t) for t in sent["tokens"]])
+                    for sent in data["sentences"]
+                ])
+            else:
+                logging.error("Empty response got for ''".format(text))
+                logging.error(result)
+        except Exception as e:
+            logging.error("Could not parse '{}'".format(text))
+            logging.error(e)

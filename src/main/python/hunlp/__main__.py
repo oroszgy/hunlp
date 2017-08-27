@@ -1,6 +1,12 @@
 import sys
+import logging
 import plac
 import hunlp
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
 
 EMPTY = "-"
 
@@ -8,7 +14,10 @@ EMPTY = "-"
 def main(host, endpoint):
     nlp = hunlp.HuNlp(host, endpoint)
     for line in sys.stdin:
-        for sent in nlp(line.strip()):
+        doc = nlp(line.strip())
+        if not doc:
+            continue
+        for sent in doc:
             for i, tok in enumerate(sent):
                 print("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(
                     i + 1, tok.text, tok.lemma or EMPTY,

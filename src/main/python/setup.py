@@ -6,7 +6,7 @@ here = path.abspath(path.dirname(__file__))
 
 setup(
     name='hunlp',
-    version='0.3.0',
+    version='0.3.1',
     description='HuNlp Python wrapper',
     url='https://github.com/oroszgy/hunlp',
     author='Gyorgy Orosz',
@@ -16,6 +16,7 @@ setup(
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
     keywords='nlp hungarian entities magyarlanc pos-tagging dependency-parsing',
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),

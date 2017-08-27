@@ -33,12 +33,17 @@ fun taggedToken(token: Array<String>): Token = Token(
 
 fun textToken(token: String) = Token(0, token)
 
-private fun parseMorphProperties(props: String): Map<String, String>? {
-    if (props == "_" || props == "")
+internal fun parseMorphProperties(props: String): Map<String, String>? {
+    val props_cleaned = props.trim()
+    if (props_cleaned == "_" || props_cleaned == "")
         return null
 
-    val ret = props.split("|").map { tagProp -> tagProp.split("=") }.associateBy({ it[0] }, { it[1] })
-    return ret
+    try {
+        val ret = props_cleaned.split("|").map { tagProp -> tagProp.split("=") }.associateBy({ it[0] }, { it[1] })
+        return ret
+    } catch (t: Throwable) {
+        return null
+    }
 }
 
 private fun <T> sentenceFromArray(tokens: Array<T>, tokenParser: (T) -> Token): Sentence =

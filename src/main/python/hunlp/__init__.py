@@ -1,4 +1,5 @@
 import requests
+import logging
 
 
 class Token:
